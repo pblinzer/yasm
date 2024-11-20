@@ -228,7 +228,6 @@ static opt_option options[] =
 /* version message */
 /*@observer@*/ static const char *version_msg[] = {
     PACKAGE_STRING,
-    "Compiled on " __DATE__ ".",
     "Copyright (c) 2001-2010 Peter Johnson and other Yasm developers.",
     "Run yasm --license for licensing overview and summary."
 };
@@ -818,7 +817,7 @@ opt_exe_handler(char *cmd, /*@unused@*/ char *param, int extra)
 }
 
 static void
-apply_preproc_builtins()
+apply_preproc_builtins(void)
 {
     char *predef;
 
@@ -854,7 +853,7 @@ apply_preproc_standard_macros(const yasm_stdmac *stdmacs)
 }
 
 static void
-apply_preproc_saved_options()
+apply_preproc_saved_options(void)
 {
     constcharparam *cp, *cpnext;
 

@@ -37,7 +37,7 @@ ordered_cpus = [
 ordered_cpu_features = [
     "FPU", "Cyrix", "AMD", "MMX", "3DNow", "SMM", "SSE", "SSE2",
     "SSE3", "SVM", "PadLock", "SSSE3", "SSE41", "SSE42", "SSE4a", "SSE5",
-    "AVX", "FMA", "AES", "CLMUL", "MOVBE", "XOP", "FMA4", "F16C",
+    "AES", "AVX", "FMA", "CLMUL", "MOVBE", "XOP", "FMA4", "F16C",
     "FSGSBASE", "RDRAND", "XSAVEOPT", "EPTVPID", "SMX", "AVX2", "BMI1",
     "BMI2", "INVPCID", "LZCNT", "TBM", "TSX", "SHA", "SMAP", "RDSEED", "ADX",
     "PRFCHW"]
@@ -5976,7 +5976,7 @@ add_insn("vblendvps", "avx_sse4xmm0", modifiers=[0x4A])
 
 # vpblendvb didn't have a 256-bit form until AVX2
 add_group("avx2_sse4xmm0",
-    cpu=["AVX2"],
+    cpu=["AVX"],
     modifiers=["Op2Add"],
     vex=128,
     prefix=0x66,
@@ -8096,7 +8096,7 @@ add_group("intel_SHA256RNDS2",
 	cpu=["SHA"],
 	opcode=[0x0F, 0x38, 0xCB],
 	operands=[Operand(type="SIMDReg", size=128, dest="Spare"),
-		Operand(type="SIMDReg", size=128, dest="EA")])
+		Operand(type="SIMDRM", size=128, dest="EA")])
 
 add_insn("SHA1MSG1", "intel_SHA1MSG1")
 add_insn("SHA1MSG2", "intel_SHA1MSG2")
